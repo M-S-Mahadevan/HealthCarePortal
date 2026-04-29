@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prescriptions • MedAssistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <div id="sidebar"></div>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2 id="pageTitle">Prescriptions</h2>
+            <div class="meta">Add prescription linked to a consultation</div>
+          </div>
+          <div class="row">
+            <button id="btnRefresh" class="btn" type="button">Refresh</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <section class="card">
+            <div class="card-header">
+              <h3>Add / Update Prescription</h3>
+              <span class="pill">Linked</span>
+            </div>
+            <div class="card-body">
+              <form id="prescriptionForm">
+                <input type="hidden" id="prescriptionId" />
+                <div class="row">
+                  <div class="field" style="flex: 1 1 100%">
+                    <label>Consultation</label>
+                    <select id="consultationId" required></select>
+                    <div class="hint">Tip: create consultation first, then add prescription.</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label>Medicine Name</label>
+                    <input id="medicineName" required placeholder="e.g., Paracetamol" />
+                  </div>
+                  <div class="field">
+                    <label>Dosage</label>
+                    <input id="dosage" required placeholder="e.g., 500mg twice a day" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field" style="flex: 1 1 100%">
+                    <label>Instructions</label>
+                    <textarea id="instructions" required placeholder="e.g., After food, for 3 days"></textarea>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                  <button class="btn primary" type="submit">Save Prescription</button>
+                  <button class="btn" type="button" id="btnClear">Clear</button>
+                </div>
+                <div id="formStatus" class="status"></div>
+              </form>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <div class="toolbar">
+                <h3>Prescriptions List</h3>
+                <span class="hint">Includes consultation + appointment + patient/doctor</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="listStatus" class="status"></div>
+              <div style="overflow: auto">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Patient</th>
+                      <th>Doctor</th>
+                      <th>Medicine</th>
+                      <th>Dosage</th>
+                      <th>Instructions</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="prescriptionsTbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/prescriptions.js"></script>
+  </body>
+</html>
+

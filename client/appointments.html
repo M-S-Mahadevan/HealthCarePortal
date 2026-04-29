@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointments • MedAssistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <div id="sidebar"></div>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2 id="pageTitle">Appointments</h2>
+            <div class="meta">Book and manage appointments (patient + doctor)</div>
+          </div>
+          <div class="row">
+            <button id="btnRefresh" class="btn" type="button">Refresh</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <section class="card">
+            <div class="card-header">
+              <h3>Book / Update Appointment</h3>
+              <span class="pill">Status workflow</span>
+            </div>
+            <div class="card-body">
+              <form id="appointmentForm">
+                <input type="hidden" id="appointmentId" />
+                <div class="row">
+                  <div class="field">
+                    <label>Patient</label>
+                    <select id="patientId" required></select>
+                  </div>
+                  <div class="field">
+                    <label>Doctor</label>
+                    <select id="doctorId" required></select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label>Appointment Date</label>
+                    <input id="appointmentDate" type="date" required />
+                  </div>
+                  <div class="field">
+                    <label>Appointment Time</label>
+                    <input id="appointmentTime" type="time" required />
+                  </div>
+                  <div class="field">
+                    <label>Status</label>
+                    <select id="status" required>
+                      <option value="pending">Pending</option>
+                      <option value="approved">Approved</option>
+                      <option value="completed">Completed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field" style="flex: 1 1 100%">
+                    <label>Reason</label>
+                    <textarea id="reason" required placeholder="Why is this appointment needed?"></textarea>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                  <button class="btn primary" type="submit">Save Appointment</button>
+                  <button class="btn" type="button" id="btnClear">Clear</button>
+                </div>
+                <div id="formStatus" class="status"></div>
+              </form>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <div class="toolbar">
+                <h3>Appointments List</h3>
+                <span class="hint">List shows patient/doctor names (populated from MongoDB)</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="listStatus" class="status"></div>
+              <div style="overflow: auto">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Date & Time</th>
+                      <th>Patient</th>
+                      <th>Doctor</th>
+                      <th>Reason</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appointmentsTbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/appointments.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctors • MedAssistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <div id="sidebar"></div>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2 id="pageTitle">Doctors</h2>
+            <div class="meta">Manage doctors, specialization, and availability</div>
+          </div>
+          <div class="row">
+            <button id="btnRefresh" class="btn" type="button">Refresh</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <section class="card">
+            <div class="card-header">
+              <h3>Add / Update Doctor</h3>
+              <span class="pill">CRUD</span>
+            </div>
+            <div class="card-body">
+              <form id="doctorForm">
+                <input type="hidden" id="doctorId" />
+                <div class="row">
+                  <div class="field">
+                    <label>Full Name</label>
+                    <input id="fullName" required placeholder="e.g., Dr. Neha Kapoor" />
+                  </div>
+                  <div class="field">
+                    <label>Specialization</label>
+                    <input id="specialization" required placeholder="e.g., Dermatologist" />
+                  </div>
+                  <div class="field">
+                    <label>Experience (years)</label>
+                    <input id="experience" type="number" min="0" required placeholder="e.g., 8" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label>Phone</label>
+                    <input id="phone" required placeholder="e.g., 9000011111" />
+                  </div>
+                  <div class="field">
+                    <label>Email</label>
+                    <input id="email" type="email" required placeholder="e.g., doctor@example.com" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label>Availability</label>
+                    <input id="availability" required placeholder="e.g., Mon-Fri 10:00-16:00" />
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                  <button class="btn primary" type="submit">Save Doctor</button>
+                  <button class="btn" type="button" id="btnClear">Clear</button>
+                </div>
+                <div id="formStatus" class="status"></div>
+              </form>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <div class="toolbar">
+                <h3>Doctors List</h3>
+                <span class="hint">Shows specialization and availability</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="listStatus" class="status"></div>
+              <div style="overflow: auto">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Specialization</th>
+                      <th>Exp</th>
+                      <th>Phone</th>
+                      <th>Email</th>
+                      <th>Availability</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="doctorsTbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/doctors.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultations • MedAssistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <div id="sidebar"></div>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2 id="pageTitle">Consultations</h2>
+            <div class="meta">Add a consultation linked to an appointment</div>
+          </div>
+          <div class="row">
+            <button id="btnRefresh" class="btn" type="button">Refresh</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <section class="card">
+            <div class="card-header">
+              <h3>Add / Update Consultation</h3>
+              <span class="pill">Linked to appointment</span>
+            </div>
+            <div class="card-body">
+              <form id="consultationForm">
+                <input type="hidden" id="consultationId" />
+                <div class="row">
+                  <div class="field" style="flex: 1 1 100%">
+                    <label>Appointment</label>
+                    <select id="appointmentId" required></select>
+                    <div class="hint">Tip: create an appointment first, then add consultation.</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label>Diagnosis</label>
+                    <input id="diagnosis" required placeholder="e.g., Viral fever" />
+                  </div>
+                  <div class="field">
+                    <label>Follow-up Date (optional)</label>
+                    <input id="followUpDate" type="date" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field" style="flex: 1 1 100%">
+                    <label>Notes</label>
+                    <textarea id="notes" placeholder="Additional notes"></textarea>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                  <button class="btn primary" type="submit">Save Consultation</button>
+                  <button class="btn" type="button" id="btnClear">Clear</button>
+                </div>
+                <div id="formStatus" class="status"></div>
+              </form>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <div class="toolbar">
+                <h3>Consultations List</h3>
+                <span class="hint">Includes appointment + patient/doctor</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="listStatus" class="status"></div>
+              <div style="overflow: auto">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Appointment</th>
+                      <th>Patient</th>
+                      <th>Doctor</th>
+                      <th>Diagnosis</th>
+                      <th>Follow-up</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="consultationsTbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/consultations.js"></script>
+  </body>
+</html>
+
